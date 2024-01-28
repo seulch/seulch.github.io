@@ -1,0 +1,39 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+#guardian-profile {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}
+
+#profile-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 75px; /* Circular photo */
+}
+
+#guardian-info {
+    margin-top: 20px;
+}
+
+#guardian-name {
+    color: blue; /* Theme color */
+    font-size: 24px;
+}
+
+#guardian-reviews {
+    text-align: left;
+    margin-top: 20px;
+}
+
+#chat-button {
+    background-color: blue; /* Theme color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}

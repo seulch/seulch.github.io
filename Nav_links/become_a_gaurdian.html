@@ -3,12 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../assets/styles/styles.css">
+<link rel="stylesheet" href="../assets/styles/gaurdian_regis.css"> 
+
 <title>Guardian Registration</title>
-<style>
-    .page {
-        display: none;
-    }
-</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
 
@@ -201,6 +204,35 @@ function submitForm() {
 function skipStep() {
     alert('Registration completed!');
 }
+
+// ------------------------------
+document.addEventListener("DOMContentLoaded", function() {
+    const pages = document.querySelectorAll('.page');
+    let currentPageIndex = 0;
+
+    function showPage(index) {
+        pages.forEach(page => page.style.display = 'none');
+        pages[index].style.display = 'block';
+    }
+
+    function nextPage() {
+        if (currentPageIndex < pages.length - 1) {
+            currentPageIndex++;
+            showPage(currentPageIndex);
+        }
+    }
+
+    function prevPage() {
+        if (currentPageIndex > 0) {
+            currentPageIndex--;
+            showPage(currentPageIndex);
+        }
+    }
+
+    document.querySelectorAll('.next-button').forEach(button => button.addEventListener('click', nextPage));
+    document.querySelectorAll('.prev-button').forEach(button => button.addEventListener('click', prevPage));
+});
+
 </script>
 
 </body>

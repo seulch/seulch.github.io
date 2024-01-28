@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guardian Search</title>
+    <link rel="stylesheet" href="../assets/styles/search_page.css">
+</head>
+<body>
+    <div id="search-container">
+        <!-- Search Bar -->
+        <input type="text" id="search-input" placeholder="Search for Guardians">
+        <button id="search-btn">Search</button>
+
+        <!-- Dropdown Filters -->
+        <img id="filter_icon" src="../assets/images/filter.png" alt="Filter Icon">
+        <div id="dropdown-filters" class="hidden">
+            <!-- All your filter elements -->
+            <!-- ... (as previously outlined) -->
+
+            <!-- Filters -->
+            <div id="filters">
+                <!-- Pickup Service -->
+                <label for="pickup-service">Pickup Service:</label>
+                <input type="checkbox" id="pickup-service">
+
+                <!-- Badge Selection -->
+                <label for="badge-filter">Badge:</label>
+                <select id="badge-filter">
+                    <option value="blue">Blue</option>
+                    <option value="purple">Purple</option>
+                    <option value="yellow">Yellow</option>
+                    <option value="none">None</option>
+                </select>
+
+                <!-- Price Range -->
+                <label for="price-range">Price Range:</label>
+                <input type="range" id="price-range" min="0" max="500"> <!-- Adjust min/max as needed -->
+
+                <!-- Gender Selection -->
+                <label for="gender-filter">Gender:</label>
+                <select id="gender-filter">
+                    <option value="all">All</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <!-- Rating Range -->
+                <label for="rating-filter">Rating:</label>
+                <select id="rating-filter">
+                    <option value="all">All Ratings</option>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars and up</option>
+                    <option value="3">3 Stars and up</option>
+                </select>
+
+                <!-- Age Range -->
+                <label for="age-range">Age Range:</label>
+                <input type="range" id="age-range" min="18" max="100"> <!-- Adjust min/max as needed -->
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div id="results">
+            <!-- Search results will be displayed here -->
+            <!-- ... (previous content) -->
+
+<!-- Results Section -->
+<div id="results">
+    <!-- Guardian Profile Item -->
+    <a href="guardian_profile_1.html" class="guardian-profile">
+        <img src="../assets/images/KakaoTalk_Photo_2024-01-28-14-20-59 001.jpeg" alt="Ava Davis" class="guardian-photo">
+        <div class="guardian-info">
+            <h2>Ava Davis</h2>
+            <div class="guardian-rating">4.0 ⭐ (100+)</div>
+            <div class="guardian-distance">0.5 mi • 7 min</div>
+            <div class="guardian-pickup">pickup available</div>
+        </div>
+        <button class="view-profile-btn">View Profile</button>
+    </a>
+    <a href="guardian_profile_1.html" class="guardian-profile">
+        <img src="../assets/images/KakaoTalk_Photo_2024-01-28-14-21-01 002.jpeg" alt="John Doe" class="guardian-photo">
+        <div class="guardian-info">
+            <h2>Ava Davis</h2>
+            <div class="guardian-rating">4.5 ⭐ (100+)</div>
+            <div class="guardian-distance">0.7 mi • 10 min</div>
+            <div class="guardian-pickup">pickup available</div>
+        </div>
+        <button class="view-profile-btn">View Profile</button>
+    </a>
+    <a href="guardian_profile_1.html" class="guardian-profile">
+        <img src="../assets/images/KakaoTalk_Photo_2024-01-28-14-21-01 003.jpeg" alt="Christy Lee" class="guardian-photo">
+        <div class="guardian-info">
+            <h2>Ava Davis</h2>
+            <div class="guardian-rating">4.0 ⭐ (100+)</div>
+            <div class="guardian-distance">0.5 mi • 7 min</div>
+            <div class="guardian-pickup">pickup available</div>
+        </div>
+        <button class="view-profile-btn">View Profile</button>
+    </a>
+    <a href="guardian_profile_1.html" class="guardian-profile">
+        <img src="../assets/images/KakaoTalk_Photo_2024-01-28-14-21-01 003.jpeg" alt="SUbi Hwang" class="guardian-photo">
+        <div class="guardian-info">
+            <h2>Ava Davis</h2>
+            <div class="guardian-rating">4.0 ⭐ (100+)</div>
+            <div class="guardian-distance">0.5 mi • 7 min</div>
+            <div class="guardian-pickup">pickup available</div>
+        </div>
+        <button class="view-profile-btn">View Profile</button>
+    </a>
+    <a href="guardian_profile_1.html" class="guardian-profile">
+        <img src="../assets/images/KakaoTalk_Photo_2024-01-28-14-05-59 005.jpeg 001.jpeg" alt="Ava Davis" class="guardian-photo">
+        <div class="guardian-info">
+            <h2>Ava Davis</h2>
+            <div class="guardian-rating">4.0 ⭐ (100+)</div>
+            <div class="guardian-distance">0.5 mi • 7 min</div>
+            <div class="guardian-pickup">pickup available</div>
+        </div>
+        <button class="view-profile-btn">View Profile</button>
+    </a>
+</div>
+
+<!-- ... (remaining content) -->
+
+    </div>
+
+    <script src="../assets/scripts/search.js"></script>
+</body>
+</html>

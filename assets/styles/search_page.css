@@ -1,0 +1,87 @@
+/* Ensure the base styles remain unchanged */
+
+#search-container {
+    /* Center the search container */
+    width: 100%;
+    max-width: 600px; /* Adjust width as needed */
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+#search-bar {
+    /* Flex container for search input and filter icon */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#search-input {
+    /* Style for search input */
+    flex-grow: 1; /* Make input take available space */
+    margin-right: 10px; /* Space between input and filter icon */
+    /* Other styles unchanged */
+}
+
+#filter-icon {
+    /* Style for filter icon */
+    cursor: pointer;
+    width: 10px; /* Adjust as needed */
+    height: auto;
+    /* Add additional styles as needed */
+}
+
+#dropdown-filters {
+    /* Style for dropdown filters */
+    display: none; /* Hide initially */
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    position: absolute;
+    width: 100%;
+    max-width: 600px; /* Adjust width as needed */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    margin-top: 10px; /* Space between search bar and dropdown */
+}
+
+.hidden {
+    display: none;
+}
+
+.guardian-profile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ccc; /* optional separator */
+}
+
+.guardian-photo {
+    /* border-radius: 50%; Makes the image round */
+    width: 80px; /* Adjust size as needed */
+    height: 80px; /* Adjust size as needed */
+    object-fit: cover; /* Ensures the image covers the area without stretching */
+}
+
+.guardian-info {
+    flex-grow: 1;
+    margin-left: 15px; /* Space between image and text */
+}
+
+.guardian-info > h2,
+.guardian-info > div {
+    margin: 5px 0; /* Spacing between info items */
+}
+
+.view-profile-btn {
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Add any additional styles you need for the profile items */
+

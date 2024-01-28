@@ -5,49 +5,103 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles.css">
   <title>Patient Registration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+
   <style>
-    /* Add these styles for the Patient Registration form */
+/* Reset and base styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body, html {
+    font-size: 18px; /* Increased font size */
+    line-height: 1.8; /* Adjusted line height */
+    color: #333;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px; /* Added padding */
+}
+
+/* Registration Section Styles */
+.registration-container {
+    background: white;
+    padding: 50px 40px; /* Increased padding */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 50%; /* Adjusted width for a wider layout */
+}
+
+.registration-container h2 {
+    color: #007bff;
+    margin-bottom: 30px; /* Increased margin for spacing */
+    text-align: center;
+}
+
+/* Form Styles */
+.registration-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns for larger screens */
+    grid-gap: 30px; /* Increased gap for more spacing */
+}
+
+.registration-form label {
+    display: block;
+    margin-bottom: 10px; /* Increased margin */
+    text-align: left;
+}
+
+.registration-form input[type="text"],
+.registration-form input[type="email"],
+.registration-form input[type="tel"],
+.registration-form input[type="number"],
+.registration-form select {
+    width: 100%;
+    padding: 50px; /* Increased padding for larger fields */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Button Styles */
+.registration-form button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 24px; /* Increased padding for a larger button */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    grid-column: span 2; /* Button spans two columns */
+}
+
+.registration-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
     .registration-container {
-      margin: 4.4rem 0;
-      text-align: center;
+        width: 100%;
+        padding: 30px 20px; /* Adjusted padding for smaller screens */
     }
 
     .registration-form {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.6rem;
-      max-width: 30rem;
-      margin: 0 auto;
-    }
-
-    .registration-form label {
-      display: block;
-      text-align: left;
-      color: var(--blue);
-    }
-
-    .registration-form input,
-    .registration-form select {
-      width: 100%;
-      padding: 1.2rem;
-      border: 1px solid #ddd; /* Default border color */
-      border-radius: 4px;
-      margin-bottom: 1.6rem;
+        grid-template-columns: 1fr; /* Single column for smaller screens */
     }
 
     .registration-form button {
-      background-color: var(--blue);
-      color: var(--white);
-      padding: 1.2rem 2.4rem;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
+        grid-column: span 1; /* Button spans one column */
     }
+}
 
-    .registration-form button:hover {
-      background-color: var(--blue-dark);
-    }
+
   </style>
 </head>
 <body>
@@ -76,7 +130,7 @@
     <input type="tel" id="phone" name="phone" pattern="[+][1] [0-9]{3} [0-9]{3} [0-9]{4}" required>
 
     <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
+    <input type="email" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
 
     <button type="submit">Register</button>
   </form>
