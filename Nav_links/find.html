@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Find a Guardian - Guardian Connect</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" type="text/css" href="../assets/styles/styles.css"> -->
+    <link rel="stylesheet" type="text/css" href="../assets/styles/responsive.css">
+    <link rel="stylesheet" type="text/css" href="../assets/styles/global.css">
+    <link rel="stylesheet" type="text/css" href="../assets/styles/find.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
+    <!-- Additional head elements here -->
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <!-- Assuming your existing navigation bar code here -->
+
+    <!-- Main Content for Finding a Guardian -->
+    <div class="find-container">
+        <h1>Find Your Guardian</h1>
+        <p>Select the type of service you require:</p>
+        <button id="emergency-btn">Emergency</button>
+        <button id="non-emergency-btn">Non-Emergency</button>
+
+        <!-- The following sections will be displayed based on the selection -->
+        <div id="emergency-section" style="display:none;">
+            <p>Connecting you to the nearest registered guardian with the required qualifications...</p>
+            <!-- Add additional content or scripts as needed for automatic matching -->
+        </div>
+
+        <div id="non-emergency-section" style="display:none;">
+            <h2>Select Your Preferences</h2>
+                <form id="filter-form">
+                    <label for="distance">Distance of Guardian (miles):</label>
+                    <input type="number" id="distance" name="distance">
+
+                    <label for="price">Price Range:</label>
+                    <input type="number" id="price" name="price">
+
+                    <label for="qualification">Qualification:</label>
+                    <select id="qualification" name="qualification">
+                        <option value="licensed">Licensed</option>
+                        <option value="experienced">Experienced</option>
+                        <!-- Add more qualification options as needed -->
+                    </select>
+                    <button type="submit">Find Guardians</button>
+            </form>
+
+            <!-- Guardians List Display -->
+            <div id="guardians-list" style="display:none;">
+                <!-- Placeholder for guardians list. This will be populated based on the filters -->
+                <!-- Example guardian profile -->
+                <div class="guardian-profile">
+                    <img src="path_to_profile_picture.jpg" alt="Guardian's Profile Picture">
+                    <h3>Guardian's Name</h3>
+                    <p>Distance: X miles</p>
+                    <p>Reviews and Ratings</p>
+                    <button onclick="location.href='matching.html'">Select This Guardian</button>
+                </div>
+                <!-- Repeat for other guardians -->
+        </div>
+    </div>
+
+    <!-- JavaScript to handle button clicks and display sections -->
+    <script>
+        document.getElementById('emergency-btn').addEventListener('click', function() {
+            document.getElementById('emergency-section').style.display = 'block';
+            document.getElementById('non-emergency-section').style.display = 'none';
+        });
+
+        document.getElementById('non-emergency-btn').addEventListener('click', function() {
+            document.getElementById('non-emergency-section').style.display = 'block';
+            document.getElementById('emergency-section').style.display = 'none';
+            // Code to populate and handle the non-emergency filters will go here
+        });
+
+        document.getElementById('filter-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        document.getElementById('guardians-list').style.display = 'block';
+
+        // Code to populate the guardians list based on the filters will go here
+        });
+    </script>
+
+    <!-- Footer -->
+    <!-- Assuming your existing footer code here -->
+</body>
+</html>

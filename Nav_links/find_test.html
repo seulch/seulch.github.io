@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <link rel="stylesheet" href="../assets/styles/find.css">
+</head>
+<body>
+    <section class="gallery">
+        <h1>FIND YOUR GAURDIAN</h1>
+        <div class="buttons">
+            <button type="button">
+                All
+            </button>
+            <button type="button" data-btn="1">
+                By Closest
+            </button>
+            <button type="button" data-btn="2">
+                By Price
+            </button>
+            <button type="button" data-btn="3">
+                By Quality
+            </button>
+            <button type="button" data-btn="4">
+                By Rating
+            </button>
+        </div>
+
+        <div class="images">
+            <img src="https://picsum.photos/id/1047/600/450" alt="img" data-img="1">
+            <img src="https://picsum.photos/id/237/600/450" alt="img" data-img="2">
+            <img src="https://picsum.photos/id/1003/600/450" alt="img" data-img="2">
+            <img src="https://picsum.photos/id/1067/600/450" alt="img" data-img="1">
+            <img src="https://picsum.photos/id/1045/600/450" alt="img" data-img="3">
+            <img src="https://picsum.photos/id/1033/600/450" alt="img" data-img="1">
+            <img src="https://picsum.photos/id/1019/600/450" alt="img" data-img="4">
+            <img src="https://picsum.photos/id/1025/600/450" alt="img" data-img="2">
+            <img src="https://picsum.photos/id/1016/600/450" alt="img" data-img="3">
+            <img src="https://picsum.photos/id/1048/600/450" alt="img" data-img="1">
+            <img src="https://picsum.photos/id/1020/600/450" alt="img" data-img="2">
+            <img src="https://picsum.photos/id/1049/600/450" alt="img" data-img="4">
+            <img src="https://picsum.photos/id/1024/600/450" alt="img" data-img="2">
+            <img src="https://picsum.photos/id/1050/600/450" alt="img" data-img="4">
+            <img src="https://picsum.photos/id/1039/600/450" alt="img" data-img="3">
+        </div>
+    </section>
+
+    <script>
+        // Get elements from DOM
+const btns = document.querySelectorAll('.buttons button');
+const imgs = document.querySelectorAll('.images img');
+
+
+// Add a click event to all buttons
+for(let i=1; i<btns.length; i++){
+    btns[i].addEventListener('click', filterImg);
+}
+
+// Set active button on click
+function setActiveBtn(e){
+    // Remove active class from all buttons
+    btns.forEach(btn=>{
+        btn.classList.remove('btn-clicked');
+    });
+
+    // Add active class to clicked button
+    e.target.classList.add('btn-clicked');
+}
+
+// Filter images
+function filterImg(e){
+    // Run the active button function
+    setActiveBtn(e);
+
+    // Loop through all images
+    imgs.forEach(img=>{
+        // Expand all images
+        img.classList.remove('img-shrink');
+        img.classList.add('img-expand');
+
+        // Get data from data attributes
+        // Get images type data
+        const imgType = parseInt(img.dataset.img);
+        // Get button type data
+        const btnType = parseInt(e.target.dataset.btn);
+
+        // If the image type and the type of the clicked button are not the same
+
+        if(imgType!==btnType){
+            // Hide the image
+            img.classList.remove('img-expand');
+            img.classList.add('img-shrink');
+        }
+    });
+}
+
+// Set click event for the 'ALL' button
+btns[0].addEventListener('click', (e)=>{
+    // Run the active button function
+    setActiveBtn(e);
+    // Loop through all images
+    imgs.forEach(img=>{
+        // Expand all images
+        img.classList.remove('img-shrink');
+        img.classList.add('img-expanded');
+    });
+});
+
+// disabling inspect element
+document.addEventListener("contextmenu", function(e){
+    e.preventDefault(); //this prevents right click
+});
+document.onkeydown=function(e){
+    if(event.keycode==123){
+        return false;
+    }
+    if(e.ctrlKey && e.shiftKey && e.keyCode=="I".charCodeAt(0)){
+        return false;
+    }
+    if(e.ctrlKey && e.shiftKey && e.keyCode=="C".charCodeAt(0)){
+        return false;
+    }
+    if(e.ctrlKey && e.shiftKey && e.keyCode=="J".charCodeAt(0)){
+        return false;
+    }
+    if(e.ctrlKey && e.keyCode=="U".charCodeAt(0)){
+        return false;
+    }
+    if(e.ctrlKey && e.keyCode=="S".charCodeAt(0)){
+        return false;
+    }
+};
+    </script>
+</body>
+</html>

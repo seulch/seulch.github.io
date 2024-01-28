@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Contact Us</title>
+    <style>
+        .error {
+            border-color: red !important; /* Use !important to override other styles */
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header Section -->
+<!-- ... (Your existing header code) ... -->
+
+<!-- Contact Section -->
+<section class="contact-section">
+    <div class="container">
+        <h2>Contact Us</h2>
+        <p>Feel free to reach out to us for any inquiries or assistance.</p>
+
+        <!-- Contact Form -->
+        <form action="#" method="POST" class="contact-form" id="contactForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <button type="button" onclick="validateForm()">Submit</button>
+        </form>
+    </div>
+</section>
+
+<!-- Footer Section -->
+<!-- ... (Your existing footer code) ... -->
+
+<script>
+    function validateForm() {
+        // Reset previous errors
+        document.querySelectorAll('.error').forEach(function (el) {
+            el.classList.remove('error');
+        });
+
+        // Validate each input field and textarea
+        var formValid = true;
+
+        var nameInput = document.getElementById('name');
+        if (nameInput.value.trim() === '') {
+            nameInput.classList.add('error');
+            formValid = false;
+        }
+
+        var emailInput = document.getElementById('email');
+        if (emailInput.value.trim() === '' || !isValidEmail(emailInput.value)) {
+            emailInput.classList.add('error');
+            formValid = false;
+        }
+
+        var phoneInput = document.getElementById('phone');
+        if (phoneInput.value.trim() === '' || !isValidPhoneNumber(phoneInput.value)) {
+            phoneInput.classList.add('error');
+            formValid = false;
+        }
+
+        var messageInput = document.getElementById('message');
+        if (messageInput.value.trim() === '') {
+            messageInput.classList.add('error');
+            formValid = false;
+        }
+
+        // If the form is valid, you can submit it
+        if (formValid) {
+            document.getElementById('contactForm').submit();
+        }
+    }
+
+    function isValidEmail(email) {
+        // Implement your email validation logic here
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    function isValidPhoneNumber(phone) {
+        // Implement your phone number validation logic here
+        return /^\d{10}$/.test(phone);
+    }
+</script>
+
+</body>
+</html>
