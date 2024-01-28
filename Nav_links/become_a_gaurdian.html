@@ -1,25 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document Title</title>
-    <!-- Add your CSS files here -->
-    <!-- <link rel="stylesheet" href="styles.css"> -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guardian Registration</title>
+<style>
+    .page {
+        display: none;
+    }
+</style>
 </head>
 <body>
-    <!-- Your content goes here -->
-    <p>Become a Gaurdian page</p>
-    <header>
-        <!-- Header content -->
-    </header>
-    <main>
-        <!-- Main content -->
-    </main>
-    <footer>
-        <!-- Footer content -->
-    </footer>
-    <!-- Add your JavaScript files here -->
-    <!-- <script src="script.js"></script> -->
+
+<div id="page1" class="page" style="display: block;">
+    <h2>Step 1: Personal Information</h2>
+    <form id="personal-info-form">
+        <label for="firstName">First Name:</label><br>
+        <input type="text" id="firstName" name="firstName" required><br>
+        <label for="lastName">Last Name:</label><br>
+        <input type="text" id="lastName" name="lastName" required><br>
+        <label for="phone">Phone:</label><br>
+        <input type="tel" id="phone" name="phone" pattern="[+][1] [0-9]{3} [0-9]{3} [0-9]{4}" required><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required><br><br>
+        <button type="button" onclick="nextPage()">Next</button>
+    </form>
+</div>
+
+<div id="page2" class="page">
+    <h2>Step 2: Phone or Email Verification</h2>
+    <form id="verification-form">
+        <label>Choose verification method:</label><br>
+        <input type="radio" id="phoneVerification" name="verificationMethod" value="phone" checked>
+        <label for="phoneVerification">Phone</label><br>
+        <input type="radio" id="emailVerification" name="verificationMethod" value="email">
+        <label for="emailVerification">Email</label><br>
+        <button type="button" onclick="sendVerificationCode()">Send Verification Code</button><br>
+        <input type="text" id="verificationCode" name="verificationCode" placeholder="Enter code" required><br>
+        <button type="button" onclick="verifyCode()">Verify</button><br><br>
+        <button type="button" onclick="prevPage(this)">Previous</button>
+        <button type="button" onclick="nextPage(this)">Next</button>
+    </form>
+</div>
+
+<div id="page3" class="page">
+    <h2>Step 3: Upload ID</h2>
+    <button type="button" onclick="captureID()">Access to Camera</button>
+    <button type="button" onclick="capturePhoto('id')">Take a Photo</button>
+    <input type="file" id="idPhoto" accept="image/*" capture="environment" style="display: none;">
+    <video id="idPreview" autoplay playsinline style="display: none; max-width: 300px;"></video><br><br>
+    <button type="button" onclick="prevPage(this)">Previous</button>
+    <button type="button" onclick="nextPage()">Next</button>
+</div>
+
+<div id="page4" class="page">
+    <h2>Step 4: Capture Face Photo</h2>
+    <button type="button" onclick="captureFace()">Access to Camera</button>
+    <button type="button" onclick="capturePhoto('face')">Take a Photo</button>
+    <input type="file" id="facePhoto" accept="image/*" capture="environment" style="display: none;">
+    <video id="facePreview" autoplay playsinline style="display: none; max-width: 300px;"></video><br><br>
+    <button type="button" onclick="prevPage(this)">Previous</button>
+    <button type="button" onclick="nextPage(this)">Next</button>
+</div>
+
+<div id="page5" class="page">
+    <h2>Step 5: Terms and Conditions</h2>
+    <p>By clicking 'Agree', you agree to our terms and conditions.</p>
+    <input type="checkbox" id="agreeTerms" required>
+    <label for="agreeTerms">I agree to the terms and conditions</label><br><br>
+    <button type="button" onclick="prevPage(this)">Previous</button>
+    <button type="button" onclick="agreeTerms()">Agree</button>
+</div>
+
+<div id="page6" class="page">
+    <h2>Step 6: Upload License and Certifications</h2>
+    <input type="file" id="licenseFile" accept=".pdf,.jpg,.jpeg,.png" multiple><br><br>
+    <button type="button" onclick="prevPage(this)">Previous</button>
+    <button type="button" onclick="submitForm()">Submit</button>
+    <button type="button" onclick="skipStep()">Skip</button>
+</div>
+
+<script>
+var capturedPhotoData = null;
+
+function nextPage() {
+    var currentPage = document.querySelector('.page[style="display: block;"]');
+    if (currentPage.id === 'page2') {
+        var codeInput = document.getElementById('verificationCode');
+        var code = codeInput.value.trim();
+        if (code === '') {
+            alert('Please verify the code first');
+            return;
+        }
+    }
+    
+    var nextPage = currentPage.nextElementSibling;
+    currentPage.style.display = 'none';
+    nextPage.style.display = 'block';
+
+    // Hide any displayed photos
+    var photoPreviews = document.querySelectorAll('img.preview');
+    photoPreviews.forEach(function(photoPreview) {
+        photoPreview.remove();
+    });
+}
+
+function prevPage(button) {
+    var currentPage = button.closest('.page');
+    var prevPage = currentPage.previousElementSibling;
+    currentPage.style.display = 'none';
+    prevPage.style.display = 'block';
+}
+
+function sendVerificationCode() {
+    // Code to send verification code based on selected method
+}
+
+function verifyCode() {
+    var codeInput = document.getElementById('verificationCode');
+    var code = codeInput.value.trim();
+
+    if (code !== '') {
+        alert('Successfully verified');
+    } else {
+        alert('Please enter the verification code');
+    }
+}
+
+function captureID() {
+    var video = document.getElementById('idPreview');
+    var idPhotoInput = document.getElementById('idPhoto');
+
+    idPhotoInput.style.display = 'none';
+
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+            video.srcObject = stream;
+            video.play();
+            video.style.display = 'block';
+        });
+    }
+}
+
+function captureFace() {
+    var video = document.getElementById('facePreview');
+    var facePhotoInput = document.getElementById('facePhoto');
+
+    facePhotoInput.style.display = 'none';
+
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+            video.srcObject = stream;
+            video.play();
+            video.style.display = 'block';
+        });
+    }
+}
+
+function capturePhoto(photoType) {
+    var videoId = photoType === 'id' ? 'idPreview' : 'facePreview';
+    var photoInputId = photoType === 'id' ? 'idPhoto' : 'facePhoto';
+
+    var video = document.getElementById(videoId);
+    var photoInput = document.getElementById(photoInputId);
+
+    photoInput.style.display = 'none';
+
+    var canvas = document.createElement('canvas');
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    var context = canvas.getContext('2d');
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+    capturedPhotoData = canvas.toDataURL('image/jpeg');
+    var previewImg = document.createElement('img');
+    previewImg.src = capturedPhotoData;
+    previewImg.classList.add('preview'); // Add a class to identify preview images
+    previewImg.style.maxWidth = '300px';
+    document.body.appendChild(previewImg);
+
+    var nextPageBtn = document.querySelector('.page[style="display: block;"] button[type="button"][onclick="nextPage(this)"]');
+    nextPageBtn.removeAttribute('disabled');
+}
+
+function agreeTerms() {
+    var agreeCheckbox = document.getElementById('agreeTerms');
+
+    if (agreeCheckbox.checked) {
+        nextPage();
+    } else {
+        alert('Please agree to the terms and conditions');
+    }
+}
+
+function submitForm() {
+    // Code to submit the form data
+    alert('Registration completed!');
+}
+
+function skipStep() {
+    alert('Registration completed!');
+}
+</script>
+
 </body>
 </html>

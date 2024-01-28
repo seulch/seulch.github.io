@@ -6,4 +6,3 @@
   <p>Confira o resultado: <a href="https://service-website-ruuuff.netlify.app/">Service Website UI</a></p>
 </div>
 # seulch.github.io
-# seulch.github.io
